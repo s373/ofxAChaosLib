@@ -6,9 +6,20 @@
 	License: WTFPL 0.0
 */
 #pragma once
-typedef float REAL;
-#define SIN sinf
-#define COS cosf
+
+// 32bit	
+// typedef float REAL;
+// #define SIN sinf
+// #define COS cosf
+
+
+// 64bit	
+typedef double REAL;
+#define SIN sin
+#define COS cos
+
+
+
 
 class AChaosBase {
 public:
@@ -18,9 +29,15 @@ public:
 	vector<REAL> iv;	
 	vector<REAL> ov;
 
-	virtual void setup(){
+	virtual void setup(REAL * params = NULL, int numiv=1, int numov=1){
 		iv.clear();
 		ov.clear();
+		for(int i=0; i<numiv; i++){
+			iv.push_back(0.0f);
+		}
+		for(int i=0; i<numov; i++){
+			ov.push_back(0.0f);
+		}
 		cout << "A-Chaos Lib (c) s373.net/x 2004, 2012, 2015 " << __DATE__ << " " __TIME__ << endl;
 	}
 	virtual void reset(){cout << "reset base" << endl;}
@@ -28,6 +45,12 @@ public:
 		iv.clear();
 		for(int i=0; i<params.size();i++){
 			iv.push_back( params[i] );			
+		}
+		reset();
+	}
+	void set(REAL * params){
+		for(int i=0; i<iv.size();i++){
+			iv[i] = params[i] ;		
 		}
 		reset();
 	}

@@ -17,23 +17,21 @@ public:
 	AChaosJong(){}
 	~AChaosJong(){}	
 
-	void setup(){
-		AChaosBase::setup();
-		//init
-		a = 1.4f;
-		b = -2.3f;
-		c = 2.4f;
-		d = -2.1f;
-		nx = 0.0f;
-		ny = 0.0f;
-
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(c);
-		iv.push_back(d);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 6, 2);	
+		if(params==NULL){	
+			//init	
+			a = 1.4f;
+			b = -2.3f;
+			c = 2.4f;
+			d = -2.1f;
+			nx = 0.0f;
+			ny = 0.0f;
+			REAL p[6] = {a,b,c,d,nx,ny};
+			set(p);
+		}  else { set(params); }
+	
 	}
 
 	void reset(){

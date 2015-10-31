@@ -20,35 +20,29 @@ public:
 	AChaosLyapunov(){}
 	~AChaosLyapunov(){}	
 
-	void setup(){
-		AChaosBase::setup();
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 14, 2);	
+		if(params==NULL){		
 
-		a[0] = -1.4f;
-		a[1] = 0.7f;
-		a[2] = -0.16f;
-		a[3] = -1.21f;
-		a[4] = 1.11f;
-		a[5] = -1.46f;
-		b[0] = -0.19f;
-		b[1] = 0.04f;
-		b[2] =  1.59f;
-		b[3] = 1.3f;
-		b[4] = 1.68f;
-		b[5] = 1.76f;
-		nx = ny = 0.0f;
-
-		for(int i=0; i<6; i++){
-			iv.push_back(a[i]);
-		}
-		for(int i=0; i<6; i++){
-			iv.push_back(b[i]);
-		}
-		iv.push_back(nx);
-		iv.push_back(ny);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
-
+			a[0] = -1.4f;
+			a[1] = 0.7f;
+			a[2] = -0.16f;
+			a[3] = -1.21f;
+			a[4] = 1.11f;
+			a[5] = -1.46f;
+			b[0] = -0.19f;
+			b[1] = 0.04f;
+			b[2] =  1.59f;
+			b[3] = 1.3f;
+			b[4] = 1.68f;
+			b[5] = 1.76f;
+			nx = ny = 0.0f;
+			REAL p[14] = {a[0],a[1],a[2],a[3],a[4],a[5],
+				b[0],b[1],b[2],b[3],b[4],b[5],nx,ny};
+			set(p);
+		} else { set(params); }
+	
 	}
 
 	void reset(){

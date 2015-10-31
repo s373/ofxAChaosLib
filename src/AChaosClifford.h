@@ -18,21 +18,23 @@ public:
 	AChaosClifford(){}
 	~AChaosClifford(){}	
 
-	void setup(){
-		AChaosBase::setup();
-		//init
-		a = -1.4f;
-		b = 1.6f;
-		c = 1.0f;
-		d = 0.7f;
-		//do not init x and y for more chaotic results
-		nx = 0.0f;
-		ny = 0.0f;
+	void setup(REAL * params = NULL){
+		AChaosBase::setup(params, 6,2);
+		if(params==NULL){
+			//init
+			a = -1.4f;
+			b = 1.6f;
+			c = 1.0f;
+			d = 0.7f;
+			//do not init x and y for more chaotic results
+			nx = 0.0f;
+			ny = 0.0f;
 
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(c);
-		iv.push_back(d);
+			REAL p[6] = {a,b,c,d,nx,ny};
+			set(p);
+		} else {
+			set(params);
+		}
 
 		ov.push_back(nx);
 		ov.push_back(ny);

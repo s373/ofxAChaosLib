@@ -20,29 +20,25 @@ public:
 	AChaosLorenz(){}
 	~AChaosLorenz(){}	
 
-	void setup(){
-		AChaosBase::setup();
-		//classic lorenz
-		 a=10.0;
-		 r=28.0; 
-		 c= 2.67; 
-		 nx=0.1; 
-		 ny=0.1; 
-		 nz=0.1;
-		 dt=0.01;
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 7, 3);	
+		if(params==NULL){		
+			//classic lorenz
+			 a=10.0;
+			 r=28.0; 
+			 c= 2.67; 
+			 nx=0.1; 
+			 ny=0.1; 
+			 nz=0.1;
+			 dt=0.01;
+			REAL p[7] = {nx,ny,nz,a,r,c,dt};
+			set(p);
+		} else { set(params); }
 
-		iv.push_back(nx);
-		iv.push_back(ny);
-		iv.push_back(nz);
-		iv.push_back(a);
-		iv.push_back(r);
-		iv.push_back(c);
-		iv.push_back(dt);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
-		ov.push_back(nz);
 	}
+
+	
 
 	void reset(){
 		nx = iv[0];
@@ -56,8 +52,7 @@ public:
 	
  	void calc(){
  		
-		REAL dt2, 
-				fx, fy, fz, 
+		REAL dt2, fx, fy, fz, 
 				ffx, ffy, ffz, 
 				dtfx, dtfy, dtfz;
 		

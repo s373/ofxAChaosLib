@@ -20,29 +20,22 @@ public:
 	AChaosRossler(){}
 	~AChaosRossler(){}	
 
-	void setup(){
-		AChaosBase::setup();		
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 7, 3);	
+		if(params==NULL){		
+			//classic rossler
+			a = 0.2;
+			b = 0.2;
+			c = 5.7;
+			nx = 1;
+			ny = 1;
+			nz = 1;
+			dt = 0.01;
+			REAL p[7] = {a,b,c,nx,ny,nz,dt};
+			set(p);
+		} else { set(params); }
 
-		//classic rossler
-		a = 0.2;
-		b = 0.2;
-		c = 5.7;
-		nx = 1;
-		ny = 1;
-		nz = 1;
-		dt = 0.01;
-
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(c);
-		iv.push_back(nx);
-		iv.push_back(ny);
-		iv.push_back(nz);
-		iv.push_back(dt);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
-		ov.push_back(nz);
 	}
 
 	void reset(){

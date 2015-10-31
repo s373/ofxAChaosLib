@@ -16,16 +16,19 @@ public:
 	AChaosVerhulst(){}
 	~AChaosVerhulst(){}
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		seed = 0.5f;
-		lambda = 2.89f;
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 2, 1);	
+		if(params==NULL){	
+			//init	
+			seed = 0.5f;
+			lambda = 2.89f;
 
-		iv.push_back(seed);
-		iv.push_back(lambda);
+			REAL p[2] = {seed,lambda};
+			set(p);
+		} else { set(params); }
 
-		ov.push_back(seed);
+		
 	}
 
 	void reset(){

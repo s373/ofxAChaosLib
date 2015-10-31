@@ -16,19 +16,18 @@ public:
 	AChaosGinger(){}
 	~AChaosGinger(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		seed = 0.82f;
-		nx = 0.7f;
-		ny = 1.2f;
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 3, 2);	
+		if(params==NULL){		
+			//init	
+			seed = 0.82f;
+			nx = 0.7f;
+			ny = 1.2f;
 
-		iv.push_back(seed);
-		iv.push_back(nx);
-		iv.push_back(ny);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+			REAL p[3] = {seed,nx,ny};
+			set(p);
+		} else { set(params); }
 	}
 
 	void reset(){

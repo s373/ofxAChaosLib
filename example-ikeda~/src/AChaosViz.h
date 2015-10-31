@@ -46,7 +46,7 @@ public:
 		}
 	}
 	
-	void update(float * data){
+	void update(REAL * data){
 		for(int i=0; i<n;i++){
 			channels[i].update(data[i]);
 		}

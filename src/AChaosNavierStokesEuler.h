@@ -16,31 +16,22 @@ public:
 	AChaosNavierStokesEuler(){}
 	~AChaosNavierStokesEuler(){}	
 
-	void setup(){
-		AChaosBase::setup();		
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 7, 5);	
+		if(params==NULL){		
+			//classic navierstokes
+			a = 1.0;
+			b = 1.0;
+			c = 1.0;
+			d = 1.0;
+			e = 1.0;
+			r = 28.0;
+			dt = 0.01;
+			REAL p[7] = {a,b,c,d,e,r,dt};
+			set(p);
+		} else { set(params); }
 
-		//classic navierstokes
-		a = 1.0;
-		b = 1.0;
-		c = 1.0;
-		d = 1.0;
-		e = 1.0;
-		r = 28.0;
-		dt = 0.01;
-
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(c);
-		iv.push_back(d);
-		iv.push_back(e);
-		iv.push_back(r);
-		iv.push_back(dt);
-
-		ov.push_back(a);
-		ov.push_back(b);
-		ov.push_back(c);
-		ov.push_back(d);
-		ov.push_back(e);
 	}
 
 	void reset(){

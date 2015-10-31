@@ -16,25 +16,21 @@ public:
 	AChaosIkeda(){}
 	~AChaosIkeda(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		 a=0.85;
-		 b=0.9; 
-		 k=0.4;
-		 p=7.7; 
-		 nx=0; 
-		 ny=0; 
-
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(k);
-		iv.push_back(p);
-		iv.push_back(nx);
-		iv.push_back(ny);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 6, 2);	
+		if(params==NULL){	
+			//init	
+			a=0.85;
+			 b=0.9; 
+			 k=0.4;
+			 p=7.7; 
+			 nx=0; 
+			 ny=0; 
+			REAL pa[6] = {nx,ny,a,b,k,p};
+			set(pa);
+		}  else { set(params); }
+	
 	}
 
 	void reset(){

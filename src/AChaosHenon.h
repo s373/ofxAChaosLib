@@ -16,21 +16,20 @@ public:
 	AChaosHenon(){}
 	~AChaosHenon(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		a = 1.4f;
-		b = 0.3f;
-		nx = 1.0f;
-		ny = 1.0f;
+	void setup(REAL * params = NULL){
+		AChaosBase::setup(params, 4,2);
+		if(params==NULL){
+			//init	
+			a = 1.4f;
+			b = 0.3f;
+			nx = 1.0f;
+			ny = 1.0f;
 
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(nx);
-		iv.push_back(ny);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+			REAL p[4] = {a,b,nx,ny};
+			set(p);
+		} else {
+			set(params);
+		}
 	}
 
 	void reset(){

@@ -19,18 +19,17 @@ public:
 	AChaosCollatz(){}
 	~AChaosCollatz(){}	
 
-	void setup(){
-		AChaosBase::setup();
+	void setup(REAL * params = NULL){
+		AChaosBase::setup(params, 3, 1);
 
-		//init
-		value = offset = 0;
-		mode = 0;
-	
-		iv.push_back(value);
-		iv.push_back(offset);
-		iv.push_back((REAL)mode);
-
-		ov.push_back(value);
+		if(params==NULL){
+			//init
+			value = offset = 0;
+			mode = 0;
+		
+			REAL p[3] = {(REAL)value,(REAL)offset,(REAL)mode};
+			set(p);
+		} else { set(params); }
 	}
 
 	void reset(){

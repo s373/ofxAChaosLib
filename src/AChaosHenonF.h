@@ -16,25 +16,24 @@ public:
 	AChaosHenonF(){}
 	~AChaosHenonF(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		a = 1.4f;
-		b = 0.3f;
-		nx = 1.0f;
-		ny = 1.0f;
-		dt = 0.01f;
-		t=0.0f;
 
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(nx);
-		iv.push_back(ny);
-		iv.push_back(dt);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+	void setup(REAL * params = NULL){
+		AChaosBase::setup(params, 5,2);
+		if(params==NULL){
+			//init	
+			a = 1.4f;
+			b = 0.3f;
+			nx = 1.0f;
+			ny = 1.0f;
+			dt = 0.01f;
+			t=0.0f;
+			REAL p[5] = {nx,ny,a,b,dt};
+			set(p);
+		} else {
+			set(params);
+		}
 	}
+
 
 	void reset(){
 		nx = iv[0];

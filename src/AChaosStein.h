@@ -17,17 +17,19 @@ public:
 	AChaosStein(){}
 	~AChaosStein(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		seed = 0.777f;
-		lambda = 1.7f;
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 2, 1);	
+		if(params==NULL){	
+			//init	
+			seed = 0.777f;
+			lambda = 1.7f;
 
-		iv.push_back(seed);
-		iv.push_back(lambda);
-
-		ov.push_back(seed);
+			REAL p[2] = {seed, lambda};
+			set(p);
+		} else { set(params); }
 	}
+
 
 	void reset(){
 		seed = iv[0];

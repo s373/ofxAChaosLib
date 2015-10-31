@@ -16,20 +16,19 @@ public:
 	AChaosLogistic1(){}
 	~AChaosLogistic1(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		seed = 0.777f;
-		lambda = 3.9f;
-		gamma = 3.43f;
-
-		iv.push_back(seed);
-		iv.push_back(lambda);
-		iv.push_back(gamma);
-
-		ov.push_back(seed);
-	}
+	void setup(REAL * params = NULL){
 	
+		AChaosBase::setup(params, 5, 4);	
+		if(params==NULL){	
+			//init	
+			seed = 0.777f;
+			lambda = 3.9f;
+			gamma = 3.43f;
+			REAL p[3] = {seed,lambda,gamma};
+			set(p);
+		}  else { set(params); }
+	}
+
 	void reset(){
 		seed = iv[0];
 		lambda = iv[1];

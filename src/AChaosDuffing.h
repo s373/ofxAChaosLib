@@ -16,27 +16,22 @@ public:
 	AChaosDuffing(){}
 	~AChaosDuffing(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		a = 0.25f;
-		b = 0.3f;
-		w = 1.0f;
-		nx = 0.0f;
-		ny = 0.0f;
-		dt = 0.01f;
-		t = 0.0f;
-
-		iv.push_back(a);
-		iv.push_back(b);
-		iv.push_back(w);
-		iv.push_back(nx);
-		iv.push_back(ny);
-		iv.push_back(dt);
-		iv.push_back(t);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 7, 2);	
+		if(params==NULL){	
+			//init	
+			a = 0.25f;
+			b = 0.3f;
+			w = 1.0f;
+			nx = 0.0f;
+			ny = 0.0f;
+			dt = 0.01f;
+			t = 0.0f;
+			REAL p[7] = {a,b,w,nx,ny,dt,t};
+			set(p);
+		}  else { set(params); }
+	
 	}
 
 	void reset(){

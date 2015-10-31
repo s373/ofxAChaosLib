@@ -18,17 +18,19 @@ public:
 	AChaosBaker(){}
 	~AChaosBaker(){}	
 
-	void setup(){
-		AChaosBase::setup();
+	void setup(REAL * params = NULL){
+		AChaosBase::setup(params, 2, 1);
 
-		eval = 0.85f;
-		init = 0.85f;
-		fold_cut = false;
+		if(params==NULL){
+			eval = 0.85f;
+			init = 0.85f;
+			fold_cut = false;
+			REAL p[2] = {init,(REAL)fold_cut};
+			set(p);
+		} else {
+			set(params);
+		}
 
-		iv.push_back(init);
-		iv.push_back(fold_cut);
-
-		ov.push_back(eval);
 	}
 
 	void reset(){		

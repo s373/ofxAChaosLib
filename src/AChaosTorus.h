@@ -17,19 +17,19 @@ public:
 	AChaosTorus(){}
 	~AChaosTorus(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		x0 = 0.777f;
-		y0 = 1.2f;
-		cr = 1.26f;
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 3, 2);	
+		if(params==NULL){		
+			//init	
+			x0 = 0.777f;
+			y0 = 1.2f;
+			cr = 1.26f;
 
-		iv.push_back(x0);
-		iv.push_back(y0);
-		iv.push_back(cr);
+			REAL p[3] = {x0,y0,cr};
+			set(p);
+		} else { set(params); }
 
-		ov.push_back(x0);
-		ov.push_back(y0);
 	}
 
 	void reset(){

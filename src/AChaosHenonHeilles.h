@@ -16,25 +16,20 @@ public:
 	AChaosHenonHeilles(){}
 	~AChaosHenonHeilles(){}	
 
-	void setup(){
-		AChaosBase::setup();		
-		//init	
-		nx = 1.0f;
-		ny = 1.0f;
-		nydot = 1.4f;
-		e = 0.125f;
-		dt = 0.02;
-
-		iv.push_back(nx);
-		iv.push_back(ny);
-		iv.push_back(nydot);
-		iv.push_back(e);
-		iv.push_back(dt);
-
-		ov.push_back(nx);
-		ov.push_back(ny);
-		ov.push_back(nxdot);
-		ov.push_back(nydot);
+	void setup(REAL * params = NULL){
+	
+		AChaosBase::setup(params, 5, 4);	
+		if(params==NULL){	
+			//init	
+			nx = 1.0f;
+			ny = 1.0f;
+			nydot = 1.4f;
+			e = 0.125f;
+			dt = 0.02;
+			REAL p[5] = {nx,ny, nydot,e,dt};
+			set(p);
+		}  else { set(params); }
+	
 	}
 
 	void reset(){
