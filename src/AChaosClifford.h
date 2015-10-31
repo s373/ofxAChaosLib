@@ -36,8 +36,6 @@ public:
 			set(params);
 		}
 
-		ov.push_back(nx);
-		ov.push_back(ny);
 	}
 
 	void reset(){
