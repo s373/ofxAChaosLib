@@ -8,15 +8,15 @@
 #pragma once
 
 // 32bit	
-// typedef float REAL;
-// #define SIN sinf
-// #define COS cosf
+typedef float REAL;
+#define SIN sinf
+#define COS cosf
 
 
 // 64bit	
-typedef double REAL;
-#define SIN sin
-#define COS cos
+// typedef double REAL;
+// #define SIN sin
+// #define COS cos
 
 
 
