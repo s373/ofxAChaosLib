@@ -26,7 +26,7 @@ Below you can find the original README from Richard Dudas. I asked Richard Dudas
 http://andre-sier.com/projects/c-lv-copy/
 http://andre-sier.com/projects/c/
 
-- André Sier (astronaut@s373.net)
+-André Sier (astronaut@s373.net)
 
 
 
