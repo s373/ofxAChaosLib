@@ -43,7 +43,7 @@ public:
 		for(int i=0; i<numov; i++){
 			ov.push_back(0.0f);
 		}
-		cout << "A-Chaos Lib (c) s373.net/x 2004, 2012, 2015 " << __DATE__ << " " __TIME__ << endl;
+		cout << "A-Chaos Lib (c) Richard Dudas 1996, (c) Andre Sier 2004, 2012, 2015 " << __DATE__ << " " __TIME__ << endl;
 	}
 	virtual void reset(){cout << "reset base" << endl;}
 	void set(vector<REAL> &params){
