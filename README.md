@@ -21,7 +21,12 @@ A-Chaos Lib web page
 http://s373.net/code/A-Chaos-Lib/A-Chaos.html
 
 
-Below you can find the original README from Richard Dudas. I asked Richard Dudas for permission to extend his collection, circa 2001+, after being immersed doing c.( ) (a 2h movie and an audio cd, still unreleased).
+Below you can find the original README from Richard Dudas. I asked Richard Dudas for permission to extend his collection, circa 2003+, after being immersed doing c.( ) (a 2h movie and an audio cd, still unreleased). 
+
+http://andre-sier.com/projects/c-lv-copy/
+http://andre-sier.com/projects/c/
+
+- André Sier (astronaut@s373.net)
 
 
 

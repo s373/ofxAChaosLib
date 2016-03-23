@@ -1,23 +1,28 @@
 /*
-	A-Chaos Lib in openFrameworks	
-	(c) s373.net/x 2004, 2012
+	32/64 bits A-Chaos Lib in openFrameworks	
+	(c) s373.net/x 2004, 2012, 2015
 	http://s373.net/code/A-Chaos-Lib/A-Chaos.html
 	programmed by Andre Sier, revised 2015
-	License: WTFPL 0.0
+	License: MIT
 */
 #pragma once
 
+// comment for 64bits version (not all objects support)
+#define ACHAOS32
+
+#ifdef ACHAOS32
 // 32bit	
-typedef float REAL;
-#define SIN sinf
-#define COS cosf
+	typedef float REAL;
+	#define SIN sinf
+	#define COS cosf
 
-
+#else
 // 64bit	
-// typedef double REAL;
-// #define SIN sin
-// #define COS cos
+	typedef double REAL;
+	#define SIN sin
+	#define COS cos
 
+#endif
 
 
 
